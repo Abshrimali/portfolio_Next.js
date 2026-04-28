@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, FileText, Mail } from "lucide-react";
+import { ArrowUpRight, FileText, Globe, Mail, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import SectionHeader from "@/components/SectionHeader";
 import { siteConfig } from "@/data/portfolio";
@@ -12,6 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
 const hasResume = siteConfig.resumeUrl !== "#";
+const hasLinkedIn = Boolean(siteConfig.linkedin);
+const hasWebsite = Boolean(siteConfig.website);
+const hasPhone = Boolean(siteConfig.phone);
 
 const contactLinks = [
   {
@@ -26,7 +29,14 @@ const contactLinks = [
     href: siteConfig.linkedin,
     icon: <LinkedinIcon size={20} />,
     description: "Experience and updates.",
-    disabled: false,
+    disabled: !hasLinkedIn,
+  },
+  {
+    label: "Website",
+    href: hasWebsite ? siteConfig.website : "",
+    icon: <Globe size={20} />,
+    description: "Live profile and links.",
+    disabled: !hasWebsite,
   },
   {
     label: "Email",
@@ -36,10 +46,17 @@ const contactLinks = [
     disabled: !hasRealEmail,
   },
   {
+    label: "Phone",
+    href: hasPhone ? `tel:${siteConfig.phone.replace(/\s+/g, "")}` : "",
+    icon: <Phone size={20} />,
+    description: siteConfig.phone || "Direct call.",
+    disabled: !hasPhone,
+  },
+  {
     label: "Resume",
     href: hasResume ? siteConfig.resumeUrl : "",
     icon: <FileText size={20} />,
-    description: "One-page summary.",
+    description: "Download the Word resume.",
     disabled: !hasResume,
   },
 ].filter((link) => !link.disabled);
@@ -96,15 +113,21 @@ export default function Contact() {
           <div className="contact-panel surface-card">
             <span className="section-kicker">Open for opportunities</span>
             <h3>{siteConfig.availability}</h3>
-            <p>Internship, freelance, and full-time opportunities.</p>
+            <p>Open to full stack, internship, freelance, and junior engineering opportunities in Karachi or remote-friendly teams.</p>
 
             <a
               className="button-primary contact-cta"
-              href={hasRealEmail ? `mailto:${siteConfig.email}` : siteConfig.linkedin}
+              href={
+                hasRealEmail
+                  ? `mailto:${siteConfig.email}`
+                  : hasLinkedIn
+                    ? siteConfig.linkedin
+                    : siteConfig.github
+              }
               target={hasRealEmail ? undefined : "_blank"}
               rel={hasRealEmail ? undefined : "noopener noreferrer"}
             >
-              {hasRealEmail ? "Send an email" : "Message on LinkedIn"}
+              {hasRealEmail ? "Send an email" : hasLinkedIn ? "Message on LinkedIn" : "Open GitHub"}
               <ArrowUpRight size={18} />
             </a>
           </div>

@@ -62,13 +62,13 @@ export default function Certificates() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="certificates">
+    <section ref={sectionRef} id="highlights">
       <div className="section-shell section-divider">
         <div ref={headerRef}>
           <SectionHeader
-            eyebrow="Recognition"
-            title="Certificates &"
-            accent="awards."
+            eyebrow="Education"
+            title="Study &"
+            accent="strengths."
           />
         </div>
 

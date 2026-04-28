@@ -5,14 +5,12 @@ import ThemeToggle, { type ThemeMode } from "@/components/ThemeToggle";
 import { navLinks, siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
+const hasLinkedIn = Boolean(siteConfig.linkedin);
+const fallbackContactLink = hasLinkedIn
+  ? siteConfig.linkedin
+  : siteConfig.website || siteConfig.github;
 const THEME_STORAGE_KEY = "portfolio-theme";
 const THEME_CHANGE_EVENT = "portfolio-theme-change";
-
-type DocumentWithViewTransition = Document & {
-  startViewTransition?: (callback: () => void) => {
-    finished?: Promise<void>;
-  };
-};
 
 function applyTheme(nextTheme: ThemeMode) {
   const root = document.documentElement;
@@ -20,22 +18,6 @@ function applyTheme(nextTheme: ThemeMode) {
   root.style.colorScheme = nextTheme;
   window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
   window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
-}
-
-function primeThemeRipple(
-  originX: number,
-  originY: number,
-  nextTheme: ThemeMode
-) {
-  const root = document.documentElement;
-  const maxX = Math.max(originX, window.innerWidth - originX);
-  const maxY = Math.max(originY, window.innerHeight - originY);
-  const radius = Math.hypot(maxX, maxY) + 96;
-
-  root.style.setProperty("--theme-ripple-x", `${originX}px`);
-  root.style.setProperty("--theme-ripple-y", `${originY}px`);
-  root.style.setProperty("--theme-ripple-size", `${radius}px`);
-  root.dataset.themeTarget = nextTheme;
 }
 
 function readResolvedTheme(): ThemeMode {
@@ -91,13 +73,34 @@ export default function Navbar() {
     () => false
   );
   const scrollResetRef = useRef<number | null>(null);
-  const themeCleanupRef = useRef<number | null>(null);
 
   useEffect(() => {
     const root = document.documentElement;
+    const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
     let frame = 0;
     let lastY = window.scrollY;
     let lastTimestamp = performance.now();
+
+    const syncActiveSection = (currentY: number) => {
+      const navOffset = 140;
+      const probe = currentY + navOffset + window.innerHeight * 0.18;
+      let nextActiveSection = sectionIds[0] ?? "home";
+
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id);
+        if (!element) {
+          return;
+        }
+
+        if (probe >= element.offsetTop) {
+          nextActiveSection = id;
+        }
+      });
+
+      setActiveSection((current) =>
+        current === nextActiveSection ? current : nextActiveSection
+      );
+    };
 
     const clearFastScroll = () => {
       root.classList.remove("is-scrolling-fast");
@@ -117,6 +120,7 @@ export default function Navbar() {
         const velocity = deltaY / elapsed;
 
         setScrolled(currentY > 32);
+        syncActiveSection(currentY);
 
         if (velocity > 1.4 || deltaY > 180) {
           root.classList.add("is-scrolling-fast");
@@ -134,7 +138,9 @@ export default function Navbar() {
     };
 
     handleScroll();
+    syncActiveSection(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
 
     return () => {
       if (frame) {
@@ -148,36 +154,8 @@ export default function Navbar() {
 
       root.classList.remove("is-scrolling-fast");
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    const sections = navLinks.map((link) => link.href.replace("#", ""));
-    const observers: IntersectionObserver[] = [];
-
-    sections.forEach((id) => {
-      const element = document.getElementById(id);
-      if (!element) {
-        return;
-      }
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        {
-          threshold: 0.45,
-          rootMargin: "-20% 0px -30% 0px",
-        }
-      );
-
-      observer.observe(element);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((observer) => observer.disconnect());
   }, []);
 
   useEffect(() => {
@@ -197,61 +175,11 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
-  useEffect(() => {
-    return () => {
-      if (themeCleanupRef.current) {
-        window.clearTimeout(themeCleanupRef.current);
-      }
-    };
-  }, []);
-
   const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     const currentTheme = readResolvedTheme();
     const nextTheme: ThemeMode = currentTheme === "dark" ? "light" : "dark";
-    const root = document.documentElement;
-    const documentWithTransition = document as DocumentWithViewTransition;
-    const buttonBounds = event.currentTarget.getBoundingClientRect();
-    const originX =
-      event.clientX === 0 && event.clientY === 0
-        ? buttonBounds.left + buttonBounds.width / 2
-        : event.clientX;
-    const originY =
-      event.clientX === 0 && event.clientY === 0
-        ? buttonBounds.top + buttonBounds.height / 2
-        : event.clientY;
-
-    primeThemeRipple(originX, originY, nextTheme);
-    root.classList.add("theme-animating", "theme-ripple-active");
-
-    const cleanup = () => {
-      if (themeCleanupRef.current) {
-        window.clearTimeout(themeCleanupRef.current);
-      }
-
-      themeCleanupRef.current = window.setTimeout(() => {
-        root.classList.remove("theme-animating", "theme-ripple-active");
-        root.removeAttribute("data-theme-target");
-      }, 1100);
-    };
-
-    const updateTheme = () => {
-      applyTheme(nextTheme);
-    };
-
-    if (documentWithTransition.startViewTransition) {
-      const transition = documentWithTransition.startViewTransition(updateTheme);
-
-      if (transition.finished) {
-        transition.finished.finally(cleanup);
-      } else {
-        cleanup();
-      }
-
-      return;
-    }
-
-    updateTheme();
-    cleanup();
+    applyTheme(nextTheme);
   };
 
   const handleNavClick = (
@@ -266,6 +194,7 @@ export default function Navbar() {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
+    setActiveSection(id);
     setMobileOpen(false);
   };
 
@@ -281,7 +210,7 @@ export default function Navbar() {
             className="brand-mark"
             onClick={(event) => handleNavClick(event, "#home")}
           >
-            <span className="brand-mark__monogram">AW</span>
+            <span className="brand-mark__monogram">{siteConfig.portrait.initials}</span>
           </a>
 
           <div className="nav-links">
@@ -306,11 +235,11 @@ export default function Navbar() {
 
             <a
               className="nav-cta"
-              href={hasRealEmail ? `mailto:${siteConfig.email}` : siteConfig.linkedin}
+              href={hasRealEmail ? `mailto:${siteConfig.email}` : fallbackContactLink}
               target={hasRealEmail ? undefined : "_blank"}
               rel={hasRealEmail ? undefined : "noopener noreferrer"}
             >
-              {hasRealEmail ? "Start a project" : "Let’s connect"}
+              {hasRealEmail ? "Start a project" : "Let's connect"}
             </a>
           </div>
 
@@ -349,11 +278,11 @@ export default function Navbar() {
 
           <a
             className="button-primary"
-            href={hasRealEmail ? `mailto:${siteConfig.email}` : siteConfig.linkedin}
+            href={hasRealEmail ? `mailto:${siteConfig.email}` : fallbackContactLink}
             target={hasRealEmail ? undefined : "_blank"}
             rel={hasRealEmail ? undefined : "noopener noreferrer"}
           >
-            {hasRealEmail ? "Email me" : "Open LinkedIn"}
+            {hasRealEmail ? "Email me" : hasLinkedIn ? "Open LinkedIn" : "Open website"}
           </a>
         </div>
       </div>

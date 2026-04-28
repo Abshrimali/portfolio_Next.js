@@ -12,6 +12,12 @@ export default function LoadingScreen({
   exiting = false,
 }: LoadingScreenProps) {
   const [counter, setCounter] = useState(0);
+  const nameParts = siteConfig.name.trim().split(/\s+/);
+  const firstName = nameParts[0] ?? siteConfig.name;
+  const lastName =
+    nameParts.length > 1
+      ? nameParts.slice(1).join(" ")
+      : siteConfig.shortName;
 
   useEffect(() => {
     const duration = 2100;
@@ -39,25 +45,21 @@ export default function LoadingScreen({
       aria-live="polite"
       aria-label={`Loading ${siteConfig.name} portfolio`}
     >
-      {/* Subtle purple ambient glow */}
       <div className={styles.glow} aria-hidden="true" />
 
       <div className={styles.inner}>
-        {/* Name reveal */}
         <div className={styles.nameBlock}>
           <div className={styles.nameLineWrap}>
-            <span className={styles.firstName}>ARSALAN</span>
+            <span className={styles.firstName}>{firstName.toUpperCase()}</span>
           </div>
           <div className={styles.nameLineWrap}>
-            <span className={styles.lastName}>WARSI</span>
+            <span className={styles.lastName}>{lastName.toUpperCase()}</span>
           </div>
         </div>
 
-        {/* Tagline */}
-        <p className={styles.tagline}>Full-Stack Developer</p>
+        <p className={styles.tagline}>{siteConfig.role}</p>
       </div>
 
-      {/* Bottom progress */}
       <div className={styles.bottom}>
         <div className={styles.progressRow}>
           <span className={styles.loadingLabel}>Loading</span>

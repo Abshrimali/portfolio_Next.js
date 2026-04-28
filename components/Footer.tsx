@@ -1,10 +1,12 @@
 "use client";
 
-import { Mail } from "lucide-react";
+import { Globe, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
+const hasLinkedIn = Boolean(siteConfig.linkedin);
+const hasWebsite = Boolean(siteConfig.website);
 
 const socials = [
   {
@@ -12,11 +14,24 @@ const socials = [
     href: siteConfig.github,
     icon: <GithubIcon size={18} />,
   },
-  {
-    label: "LinkedIn",
-    href: siteConfig.linkedin,
-    icon: <LinkedinIcon size={18} />,
-  },
+  ...(hasLinkedIn
+    ? [
+        {
+          label: "LinkedIn",
+          href: siteConfig.linkedin,
+          icon: <LinkedinIcon size={18} />,
+        },
+      ]
+    : []),
+  ...(hasWebsite
+    ? [
+        {
+          label: "Website",
+          href: siteConfig.website,
+          icon: <Globe size={18} />,
+        },
+      ]
+    : []),
   ...(hasRealEmail
     ? [
         {
@@ -34,7 +49,7 @@ export default function Footer() {
       <div className="section-shell">
         <div className="site-footer__inner">
           <div className="footer-brand">
-            <span className="brand-mark__monogram">AW</span>
+            <span className="brand-mark__monogram">{siteConfig.portrait.initials}</span>
             <div>
               <strong>{siteConfig.name}</strong>
               <p>{siteConfig.tagline}</p>
@@ -62,7 +77,7 @@ export default function Footer() {
         </div>
 
         <div className="site-footer__bottom">
-          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <p>Built with Next.js and TypeScript.</p>
         </div>
       </div>

@@ -2,12 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Globe } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import ProfilePortrait from "@/components/ProfilePortrait";
 import { siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
+const hasLinkedIn = Boolean(siteConfig.linkedin);
+const hasWebsite = Boolean(siteConfig.website);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -84,9 +86,9 @@ export default function Hero() {
 
             <h1 className="hero-title">
               <span className="hero-title__name">{siteConfig.name}</span>
-              <span className="hero-title__line">React and Next.js apps</span>
+              <span className="hero-title__line">{siteConfig.heroHeadline.lead}</span>
               <span className="hero-title__line hero-title__line--accent">
-                built clean and fast.
+                {siteConfig.heroHeadline.accent}
               </span>
             </h1>
 
@@ -104,11 +106,21 @@ export default function Hero() {
 
               <a
                 className="button-secondary"
-                href={hasRealEmail ? `mailto:${siteConfig.email}` : siteConfig.linkedin}
+                href={
+                  hasRealEmail
+                    ? `mailto:${siteConfig.email}`
+                    : hasLinkedIn
+                      ? siteConfig.linkedin
+                      : siteConfig.website
+                }
                 target={hasRealEmail ? undefined : "_blank"}
                 rel={hasRealEmail ? undefined : "noopener noreferrer"}
               >
-                {hasRealEmail ? "Contact me" : "Connect on LinkedIn"}
+                {hasRealEmail
+                  ? "Contact me"
+                  : hasLinkedIn
+                    ? "Connect on LinkedIn"
+                    : "Visit website"}
                 <ArrowUpRight size={18} />
               </a>
             </div>
@@ -140,15 +152,28 @@ export default function Hero() {
               >
                 <GithubIcon size={18} />
               </a>
-              <a
-                href={siteConfig.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-button"
-                aria-label="LinkedIn profile"
-              >
-                <LinkedinIcon size={18} />
-              </a>
+              {hasLinkedIn ? (
+                <a
+                  href={siteConfig.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-button"
+                  aria-label="LinkedIn profile"
+                >
+                  <LinkedinIcon size={18} />
+                </a>
+              ) : null}
+              {hasWebsite ? (
+                <a
+                  href={siteConfig.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-button"
+                  aria-label="Personal website"
+                >
+                  <Globe size={18} />
+                </a>
+              ) : null}
             </div>
           </div>
 
@@ -159,9 +184,7 @@ export default function Hero() {
 
               <div className="hero-stage__panel">
                 <div className="hero-stage__header">
-                  <span className="hero-stage__status">
-                    Open to work
-                  </span>
+                  <span className="hero-stage__status">{siteConfig.availability}</span>
                 </div>
 
                 <ProfilePortrait
@@ -173,19 +196,19 @@ export default function Hero() {
 
                 <div className="hero-stage__caption">
                   <span className="section-kicker">Current focus</span>
-                  <h2>Full-stack work with clean UI.</h2>
+                  <h2>Full-stack work with clean user experience.</h2>
                   <p>{siteConfig.intro}</p>
                 </div>
               </div>
 
               <div className="floating-card floating-card--top">
-                <span>Current role</span>
-                <strong>Teaching Intern at Aptech</strong>
+                <span>{siteConfig.heroCards.roleLabel}</span>
+                <strong>{siteConfig.heroCards.roleValue}</strong>
               </div>
 
               <div className="floating-card floating-card--bottom">
-                <span>Strength</span>
-                <strong>Clean UI with practical engineering</strong>
+                <span>{siteConfig.heroCards.strengthLabel}</span>
+                <strong>{siteConfig.heroCards.strengthValue}</strong>
               </div>
             </div>
           </div>

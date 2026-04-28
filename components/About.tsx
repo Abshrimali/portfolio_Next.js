@@ -74,7 +74,7 @@ export default function About() {
             eyebrow="About"
             title="Building products with"
             accent="clarity."
-            description="I focus on clean UI, readable code, and practical full-stack work."
+            description="I focus on clean, scalable code, strong fundamentals, and web apps that are practical to use."
           />
         </div>
 
@@ -83,27 +83,29 @@ export default function About() {
             <div className="about-story__lead">
               <span className="about-story__label">About me</span>
               <p>
-                I&apos;m <strong>{siteConfig.name}</strong>, a full-stack
-                developer focused on React, Next.js, Node.js, and MongoDB.
+                I&apos;m <strong>{siteConfig.name}</strong>, a full stack web
+                developer working with React, PHP, .NET, and modern frontend
+                fundamentals.
               </p>
             </div>
 
             <p>
-              Teaching improved my communication and teamwork, which helps me
-              build products that are easier to use and easier to maintain.
+              Alongside building dynamic web applications, I also support
+              technical instruction, which has strengthened how I debug
+              problems, explain concepts, and build cleaner user experiences.
             </p>
 
             <div className="about-snapshot outline-card">
               <span className="section-kicker">Working style</span>
               <ul className="about-detail-list">
                 <li className="about-detail-item">
-                  Clean UI over visual noise.
+                  Clean code that stays readable and scalable.
                 </li>
                 <li className="about-detail-item">
-                  Scalable structure over quick fixes.
+                  Frontend and backend work that support each other well.
                 </li>
                 <li className="about-detail-item">
-                  Clear communication throughout the work.
+                  Strong communication shaped by real teaching support.
                 </li>
               </ul>
             </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope, Syne } from "next/font/google";
 import BootLoader from "@/components/BootLoader";
+import { siteConfig } from "@/data/portfolio";
 import "./globals.css";
 
 const syne = Syne({
@@ -41,23 +42,21 @@ const themeInitScript = `
 `;
 
 export const metadata: Metadata = {
-  title: "Muhammad Arsalan Warsi | Full-Stack Developer",
-  description:
-    "Portfolio of Muhammad Arsalan Warsi, a MERN and Next.js developer crafting polished interfaces, scalable web applications, and thoughtful product experiences.",
+  title: `${siteConfig.name} | ${siteConfig.role}`,
+  description: siteConfig.description,
   keywords: [
-    "Muhammad Arsalan Warsi",
-    "Arsalan Warsi",
-    "Full-Stack Developer",
+    "Abhijeet Shrimali",
+    "Full Stack Web Developer",
+    "React Developer",
+    "PHP Developer",
+    ".NET Developer",
     "MERN Developer",
     "Next.js Portfolio",
-    "React Developer",
-    "UI Portfolio",
   ],
-  authors: [{ name: "Muhammad Arsalan Warsi" }],
+  authors: [{ name: siteConfig.name }],
   openGraph: {
-    title: "Muhammad Arsalan Warsi | Full-Stack Developer",
-    description:
-      "Thoughtful product interfaces backed by scalable MERN and Next.js systems.",
+    title: `${siteConfig.name} | ${siteConfig.role}`,
+    description: siteConfig.description,
     type: "website",
     locale: "en_US",
   },

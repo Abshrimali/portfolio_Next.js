@@ -61,17 +61,17 @@ const categories = [
   {
     key: "frontend" as const,
     title: "Frontend",
-    description: "React, Next.js, TypeScript, and UI work.",
+    description: "React, Next.js, and responsive interface work.",
   },
   {
     key: "backend" as const,
     title: "Backend",
-    description: "Node.js, Express, auth, and APIs.",
+    description: "Node.js, Express, PHP, .NET, and app logic.",
   },
   {
     key: "database" as const,
     title: "Database",
-    description: "MongoDB and MySQL.",
+    description: "Database work with MongoDB and MySQL.",
   },
   {
     key: "tools" as const,

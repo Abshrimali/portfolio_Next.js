@@ -1,34 +1,46 @@
 export const siteConfig = {
-  name: "Muhammad Arsalan Warsi",
-  shortName: "Arsalan",
-  role: "Full-Stack Developer",
-  specialization: "MERN Stack + Next.js",
-  tagline: "Full-stack developer focused on React, Next.js, and MERN apps.",
+  name: "Abhijeet Shrimali",
+  shortName: "Abhijeet",
+  role: "Full Stack Web Developer",
+  specialization: "React, PHP, and .NET",
+  tagline: "Full stack web developer building clean, scalable apps with strong frontend and backend fundamentals.",
   description:
-    "I build clean, responsive web apps with React, Next.js, Node.js, and MongoDB.",
+    "Full Stack Developer skilled in React, PHP, and .NET, focused on clean code, dynamic web apps, and improving user experience.",
   intro:
-    "I teach web development and build practical products with a focus on clear UI and solid structure.",
+    "I enjoy building responsive interfaces, writing maintainable backend logic, and helping turn technical concepts into practical project work.",
   availability: "Open to work",
-  email: "arsalanwarsi@example.com",
-  github: "https://github.com/MArsalanwarsi",
-  linkedin: "https://linkedin.com/in/marsalanwarsi",
-  resumeUrl: "#",
+  email: "abbi.shrimali@gmail.com",
+  phone: "+92 311 2964673",
+  github: "https://github.com/Abshrimali",
+  linkedin: "https://linkedin.com/in/abhijeet-shrimali",
+  website: "https://abshrimali.github.io/Abshrimali/",
+  resumeUrl: "/Abhijeet_Shrimali_Resume.docx",
+  heroHeadline: {
+    lead: "dynamic web apps",
+    accent: "built clean and scalable.",
+  },
   portrait: {
     src: "/profile-photo.jpg",
     fallbackSrc: "/profile-photo.svg",
-    alt: "Portrait of Muhammad Arsalan Warsi",
-    initials: "AW",
+    alt: "Portrait of Abhijeet Shrimali",
+    initials: "AS",
   },
   focusAreas: [
-    "React & Next.js",
-    "Node.js & APIs",
-    "Clear communication",
+    "React interfaces",
+    "PHP and .NET builds",
+    "Technical instruction",
   ],
   heroMetrics: [
-    { value: "06+", label: "Projects" },
-    { value: "22", label: "Technologies" },
-    { value: "100+", label: "Students taught" },
+    { value: "30+", label: "Students supported" },
+    { value: "16", label: "Public repos" },
+    { value: "04", label: "Key focus areas" },
   ],
+  heroCards: {
+    roleLabel: "Current focus",
+    roleValue: "Full-stack learning and project delivery",
+    strengthLabel: "Strength",
+    strengthValue: "Clear code with practical problem solving",
+  },
 };
 
 export const navLinks = [
@@ -37,7 +49,7 @@ export const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Certificates", href: "#certificates" },
+  { label: "Education", href: "#highlights" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -48,28 +60,22 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
-  { name: "HTML5", icon: "Code2", category: "frontend" },
-  { name: "CSS3", icon: "Palette", category: "frontend" },
   { name: "JavaScript", icon: "FileCode", category: "frontend" },
+  { name: "React", icon: "Atom", category: "frontend" },
+  { name: "HTML", icon: "Code2", category: "frontend" },
+  { name: "CSS", icon: "Palette", category: "frontend" },
   { name: "TypeScript", icon: "FileType", category: "frontend" },
-  { name: "React.js", icon: "Atom", category: "frontend" },
   { name: "Next.js", icon: "Globe", category: "frontend" },
-  { name: "Tailwind CSS", icon: "Wind", category: "frontend" },
-  { name: "Redux Toolkit", icon: "Layers", category: "frontend" },
   { name: "Node.js", icon: "Server", category: "backend" },
   { name: "Express.js", icon: "Zap", category: "backend" },
+  { name: "PHP", icon: "Code2", category: "backend" },
+  { name: ".NET", icon: "Layers", category: "backend" },
   { name: "REST APIs", icon: "Network", category: "backend" },
-  { name: "JWT Auth", icon: "Shield", category: "backend" },
-  { name: "OTP Systems", icon: "KeyRound", category: "backend" },
-  { name: "Cookies", icon: "Cookie", category: "backend" },
   { name: "MongoDB", icon: "Database", category: "database" },
   { name: "MySQL", icon: "Table", category: "database" },
   { name: "Git", icon: "GitBranch", category: "tools" },
   { name: "GitHub", icon: "Github", category: "tools" },
-  { name: "Cloudinary", icon: "Cloud", category: "tools" },
-  { name: "GSAP", icon: "Sparkles", category: "tools" },
-  { name: "Gemini API", icon: "Bot", category: "tools" },
-  { name: "Nodemailer", icon: "Mail", category: "tools" },
+  { name: "Vercel", icon: "Cloud", category: "tools" },
 ];
 
 export interface Experience {
@@ -83,27 +89,27 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    role: "Teaching Intern",
-    company: "Aptech",
-    location: "Shahrah-e-Faisal",
-    period: "Dec 2025 — Present",
+    role: "Teaching Assistant",
+    company: "Aptech Shahrah-e-Faisal",
+    location: "Karachi, Pakistan",
+    period: "Current",
     description: [
-      "Teach MERN Stack and PHP to students.",
-      "Cover JWT auth, REST APIs, cookies, and project-based learning.",
-      "Guide students through practical assignments and code reviews.",
+      "Assisted in teaching web development topics including HTML, CSS, and JavaScript to more than 30 students.",
+      "Debugged student coding issues in real time and supported lab sessions with hands-on project help.",
+      "Helped students build mini web projects while reinforcing core concepts and problem-solving skills.",
     ],
-    skills: ["MERN Stack", "PHP", "JWT", "REST APIs", "Teaching"],
+    skills: ["HTML", "CSS", "JavaScript", "Teaching", "Debugging"],
   },
   {
-    role: "Computer Teacher",
-    company: "Boston Grammar School",
-    location: "",
-    period: "Aug 2025 — Dec 2025",
+    role: "Student Developer",
+    company: "Aptech Learning Pakistan",
+    location: "Karachi, Pakistan",
+    period: "In progress",
     description: [
-      "Taught computing basics and programming fundamentals.",
-      "Introduced web development and problem-solving skills.",
+      "Developing coursework web applications using PHP and .NET with responsive frontend work in HTML, CSS, and JavaScript.",
+      "Gaining practical experience with backend logic, database integration, and MySQL-driven application features.",
     ],
-    skills: ["Computing", "Programming", "Web Basics"],
+    skills: ["React", "PHP", ".NET", "MySQL", "Full Stack"],
   },
 ];
 
@@ -122,125 +128,80 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Hotel Management System",
-    label: "Hospitality Platform",
+    title: "Aptech Web Projects",
+    label: "Coursework Build",
     description:
-      "Full-stack hotel booking app with secure auth, role-based admin, and guest management workflows.",
+      "Coursework projects using PHP and .NET to build dynamic web apps with responsive frontends and MySQL-backed logic.",
     longDescription:
-      "Full-stack app for bookings, guest records, and admin operations.",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+      "A set of coursework builds focused on full-stack fundamentals, backend logic, and practical database integration.",
+    techStack: ["PHP", ".NET", "HTML", "CSS", "JavaScript", "MySQL"],
     features: [
-      "Booking and guest management",
-      "JWT auth and protected routes",
-      "Role-based admin controls",
+      "Dynamic web application coursework",
+      "Responsive user interfaces",
+      "Backend logic with MySQL integration",
     ],
-    github: "https://github.com/MArsalanwarsi",
+    github: "https://github.com/Abshrimali",
     live: "#",
-    accent: "#7c3aed",
+    accent: "#fb7185",
     surface:
-      "linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(88, 28, 135, 0.92))",
+      "linear-gradient(135deg, rgba(190, 24, 93, 0.9), rgba(136, 19, 55, 0.92))",
   },
   {
-    title: "Fitness Tracker",
-    label: "AI Product Build",
+    title: "MERN Portfolio",
+    label: "Full-Stack Portfolio",
     description:
-      "Fitness app with OTP verification, AI-powered assistance via Gemini, and comprehensive analytics.",
+      "Portfolio app with a React frontend, Express backend, MongoDB-ready setup, and a contact workflow designed for real deployment.",
     longDescription:
-      "Tracks fitness activity with OTP login, analytics, and Gemini-powered help.",
-    techStack: [
-      "React",
-      "Redux",
-      "Node.js",
-      "MongoDB",
-      "Gemini AI",
-      "Nodemailer",
-    ],
+      "A portfolio build that blends frontend presentation with backend structure and deployable project organization.",
+    techStack: ["React", "Express", "MongoDB", "Three.js", "Vite"],
     features: [
-      "OTP verification with Nodemailer",
-      "Gemini-powered assistance",
-      "JWT and cookie-based auth",
+      "Separate frontend and backend structure",
+      "Contact endpoint and GitHub sync support",
+      "Portfolio content designed for deployment",
     ],
-    github: "https://github.com/MArsalanwarsi/fitness-tracker-React.git",
-    live: "#",
-    accent: "#a855f7",
+    github: "https://github.com/Abshrimali/mern-portfolio",
+    live: "https://mern-portfolio-pi.vercel.app",
+    accent: "#6ee7b7",
     surface:
-      "linear-gradient(135deg, rgba(168, 85, 247, 0.92), rgba(109, 40, 217, 0.92))",
+      "linear-gradient(135deg, rgba(15, 118, 110, 0.92), rgba(17, 94, 89, 0.94))",
   },
   {
-    title: "Personal Portfolio",
-    label: "Design System",
+    title: "Weather API Dashboard",
+    label: "API Integration",
     description:
-      "Portfolio with cinematic motion, responsive UI, dark/light themes, and clear personal branding.",
+      "Frontend weather project built around external API calls, async state handling, and a cleaner day-to-day product UI.",
     longDescription:
-      "Personal portfolio built with Next.js, TypeScript, and GSAP.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP"],
+      "An app that helped sharpen API consumption, loading states, and practical UI feedback for users.",
+    techStack: ["React", "JavaScript", "API Integration", "CSS"],
     features: [
-      "Responsive layouts",
-      "Custom motion and transitions",
-      "Reusable component structure",
+      "External weather API integration",
+      "Async request and state handling",
+      "Responsive weather-focused interface",
     ],
-    github: "https://github.com/MArsalanwarsi",
+    github: "https://github.com/Abshrimali/Weather_API",
     live: "#",
-    accent: "#c084fc",
+    accent: "#7dd3fc",
     surface:
-      "linear-gradient(135deg, rgba(192, 132, 252, 0.92), rgba(124, 58, 237, 0.88))",
+      "linear-gradient(135deg, rgba(14, 116, 144, 0.92), rgba(30, 64, 175, 0.92))",
   },
   {
-    title: "E-Commerce Dashboard",
-    label: "Admin Platform",
+    title: "REST API Express",
+    label: "Backend Practice",
     description:
-      "Admin dashboard for managing products, orders, and customers with analytics and real-time data.",
+      "Express-based backend practice repository centered on routes, controllers, and cleaner REST-style server organization.",
     longDescription:
-      "Full-featured admin panel with charts, product CRUD, and order tracking.",
-    techStack: ["React", "Redux Toolkit", "Node.js", "MongoDB", "Chart.js"],
+      "A backend-focused project used to strengthen Express fundamentals and API thinking.",
+    techStack: ["Node.js", "Express", "JavaScript", "REST API"],
     features: [
-      "Product and order management",
-      "Sales analytics dashboard",
-      "Role-based access control",
+      "Express server structure",
+      "REST-oriented route organization",
+      "Hands-on backend learning repo",
     ],
-    github: "https://github.com/MArsalanwarsi",
+    github: "https://github.com/Abshrimali/REST_API_Express",
     live: "#",
-    accent: "#7c3aed",
+    accent: "#f59e0b",
     surface:
-      "linear-gradient(135deg, rgba(109, 40, 217, 0.9), rgba(88, 28, 135, 0.92))",
-  },
-  {
-    title: "Task Manager App",
-    label: "Productivity Tool",
-    description:
-      "Collaborative task management app with real-time updates, drag-and-drop, and team workflows.",
-    longDescription:
-      "Task manager with kanban board, team collaboration, and deadline tracking.",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
-    features: [
-      "Drag-and-drop task board",
-      "Real-time collaboration",
-      "Priority and deadline tracking",
-    ],
-    github: "https://github.com/MArsalanwarsi",
-    live: "#",
-    accent: "#a855f7",
-    surface:
-      "linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(124, 58, 237, 0.92))",
-  },
-  {
-    title: "Blog Platform",
-    label: "Content System",
-    description:
-      "Full-stack blogging platform with rich text editor, image uploads via Cloudinary, and comments.",
-    longDescription:
-      "Blog platform with markdown editor, media management, and comment system.",
-    techStack: ["Next.js", "Node.js", "MongoDB", "Cloudinary", "JWT"],
-    features: [
-      "Rich text editor with markdown",
-      "Image uploads via Cloudinary",
-      "Comment and like system",
-    ],
-    github: "https://github.com/MArsalanwarsi",
-    live: "#",
-    accent: "#c084fc",
-    surface:
-      "linear-gradient(135deg, rgba(192, 132, 252, 0.9), rgba(147, 51, 234, 0.92))",
+      "linear-gradient(135deg, rgba(180, 83, 9, 0.92), rgba(146, 64, 14, 0.94))",
   },
 ];
 
@@ -252,32 +213,32 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-  { value: 6, suffix: "+", label: "Projects", icon: "FolderGit2" },
-  { value: 2, suffix: "+", label: "Roles", icon: "Briefcase" },
-  { value: 22, suffix: "", label: "Technologies", icon: "Code2" },
-  { value: 100, suffix: "+", label: "Students", icon: "Users" },
+  { value: 16, suffix: "", label: "Public Repos", icon: "FolderGit2" },
+  { value: 4, suffix: "", label: "Featured Projects", icon: "Briefcase" },
+  { value: 30, suffix: "+", label: "Students Helped", icon: "Users" },
+  { value: 7, suffix: "+", label: "Core Technologies", icon: "Code2" },
 ];
 
 export const aboutHighlights = [
   {
-    title: "Scalable Architecture",
-    description: "Builds that stay organized as features grow.",
+    title: "Full-Stack Range",
+    description: "Works across React interfaces, backend logic, and database-connected app flows.",
     icon: "Layers",
   },
   {
-    title: "Premium UI Thinking",
-    description: "Clean interfaces that feel professional and easy to use.",
-    icon: "Palette",
-  },
-  {
-    title: "Performance First",
-    description: "Fast loading and smooth interaction across the app.",
+    title: "Teaching Support",
+    description: "Comfortable explaining concepts, debugging issues, and helping others build working projects.",
     icon: "Zap",
   },
   {
-    title: "Clear Communication",
-    description: "Clear explanations, teamwork, and practical thinking.",
+    title: "Responsive UI",
+    description: "Builds interfaces with attention to usability, structure, and cleaner user experience.",
     icon: "Code2",
+  },
+  {
+    title: "Steady Growth",
+    description: "Actively growing through coursework, public repos, and ongoing computer science studies.",
+    icon: "Palette",
   },
 ];
 
@@ -291,51 +252,35 @@ export interface Certificate {
 
 export const certificates: Certificate[] = [
   {
-    title: "Web Development Fundamentals",
-    issuer: "Aptech",
-    date: "2024",
+    title: "BSCS",
+    issuer: "Virtual University of Pakistan",
+    date: "In progress",
     description:
-      "Comprehensive certification covering HTML, CSS, JavaScript, and responsive web design principles.",
-    icon: "Globe",
-  },
-  {
-    title: "MERN Stack Development",
-    issuer: "Aptech",
-    date: "2024",
-    description:
-      "Full-stack certification covering MongoDB, Express.js, React, and Node.js with project-based assessment.",
+      "Bachelor of Science in Computer Science with ongoing focus on software fundamentals and development.",
     icon: "Layers",
   },
   {
-    title: "JavaScript & TypeScript",
-    issuer: "Aptech",
-    date: "2024",
+    title: "ADSE",
+    issuer: "Aptech Learning Pakistan",
+    date: "In progress",
     description:
-      "Advanced JavaScript patterns, TypeScript type system, and modern ES6+ features.",
-    icon: "FileCode",
-  },
-  {
-    title: "Database Management",
-    issuer: "Aptech",
-    date: "2024",
-    description:
-      "MongoDB and MySQL database design, optimization, and integration with web applications.",
+      "Advance Diploma in Software Engineering with practical work in web development and application building.",
     icon: "Database",
   },
   {
-    title: "Best Student Award",
-    issuer: "Aptech Shahrah-e-Faisal",
-    date: "2024",
+    title: "SBTE Bridge Course",
+    issuer: "Aptech Learning Pakistan",
+    date: "April 2024",
     description:
-      "Recognized as the top-performing student for academic excellence and project work.",
-    icon: "Award",
+      "Completed the bridge course covering the SBTE equivalence of HDSE to DAS.",
+    icon: "Globe",
   },
   {
-    title: "Teaching Excellence",
-    issuer: "Boston Grammar School",
-    date: "2025",
+    title: "Soft Skills & Languages",
+    issuer: "Personal strengths",
+    date: "Ongoing",
     description:
-      "Awarded for outstanding contribution to Computer Science education and student mentorship.",
-    icon: "Star",
+      "Strong teamwork, time management, communication, and problem solving with English, Urdu, and Gujarati.",
+    icon: "FileCode",
   },
 ];
