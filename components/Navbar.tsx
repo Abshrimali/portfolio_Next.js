@@ -4,11 +4,6 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ThemeToggle, { type ThemeMode } from "@/components/ThemeToggle";
 import { navLinks, siteConfig } from "@/data/portfolio";
 
-const hasRealEmail = !siteConfig.email.includes("example.com");
-const hasLinkedIn = Boolean(siteConfig.linkedin);
-const fallbackContactLink = hasLinkedIn
-  ? siteConfig.linkedin
-  : siteConfig.website || siteConfig.github;
 const THEME_STORAGE_KEY = "portfolio-theme";
 const THEME_CHANGE_EVENT = "portfolio-theme-change";
 
@@ -235,11 +230,11 @@ export default function Navbar() {
 
             <a
               className="nav-cta"
-              href={hasRealEmail ? `mailto:${siteConfig.email}` : fallbackContactLink}
-              target={hasRealEmail ? undefined : "_blank"}
-              rel={hasRealEmail ? undefined : "noopener noreferrer"}
+              href={siteConfig.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {hasRealEmail ? "Start a project" : "Let's connect"}
+              Download Resume
             </a>
           </div>
 
@@ -278,11 +273,11 @@ export default function Navbar() {
 
           <a
             className="button-primary"
-            href={hasRealEmail ? `mailto:${siteConfig.email}` : fallbackContactLink}
-            target={hasRealEmail ? undefined : "_blank"}
-            rel={hasRealEmail ? undefined : "noopener noreferrer"}
+            href={siteConfig.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            {hasRealEmail ? "Email me" : hasLinkedIn ? "Open LinkedIn" : "Open website"}
+            Download Resume
           </a>
         </div>
       </div>
