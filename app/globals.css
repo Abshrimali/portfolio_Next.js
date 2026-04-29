@@ -673,6 +673,9 @@ html[data-theme="light"].is-scrolling-fast .social-button {
 
 .contact-panel { display: flex; flex-direction: column; justify-content: center; min-height: 100%; background: linear-gradient(145deg, rgba(192,132,252,.18), transparent 38%), linear-gradient(180deg, rgba(14,6,26,.92), rgba(6,3,14,.98)); }
 .contact-cta { margin-top: 1.5rem; width: fit-content; }
+.linkedin-badge-wrap { margin-top: 1.4rem; min-height: 260px; }
+.linkedin-badge-wrap .badge-base { max-width: 100%; }
+.linkedin-badge-wrap .badge-base__link { color: var(--text); }
 .contact-link-card { display: flex; flex-direction: column; justify-content: flex-start; align-self: start; min-height: 100%; }
 .contact-link-card__icon { margin-bottom: 1rem; }
 .contact-link-card__title { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: .45rem; }

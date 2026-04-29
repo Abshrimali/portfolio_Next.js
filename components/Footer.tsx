@@ -1,12 +1,11 @@
 "use client";
 
-import { Globe, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
 const hasLinkedIn = Boolean(siteConfig.linkedin);
-const hasWebsite = Boolean(siteConfig.website);
 
 const socials = [
   {
@@ -20,15 +19,6 @@ const socials = [
           label: "LinkedIn",
           href: siteConfig.linkedin,
           icon: <LinkedinIcon size={18} />,
-        },
-      ]
-    : []),
-  ...(hasWebsite
-    ? [
-        {
-          label: "Website",
-          href: siteConfig.website,
-          icon: <Globe size={18} />,
         },
       ]
     : []),

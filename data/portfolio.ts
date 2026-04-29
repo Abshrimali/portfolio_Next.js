@@ -12,8 +12,8 @@ export const siteConfig = {
   email: "abbi.shrimali@gmail.com",
   phone: "+92 311 2964673",
   github: "https://github.com/Abshrimali",
-  linkedin: "https://linkedin.com/in/abhijeet-shrimali",
-  website: "https://abshrimali.github.io/Abshrimali/",
+  linkedin: "https://pk.linkedin.com/in/abhijeet-shrimali-39aa20224",
+  website: "",
   resumeUrl: "/Abhijeet_Shrimali_Resume.docx",
   heroHeadline: {
     lead: "dynamic web apps",
@@ -272,7 +272,7 @@ export const certificates: Certificate[] = [
     issuer: "Aptech Learning Pakistan",
     date: "April 2024",
     description:
-      "Completed the bridge course covering the SBTE equivalence of HDSE to DAS.",
+      "Completed the bridge course covering the SBTE equivalence of HDSE to DAE.",
     icon: "Globe",
   },
   {

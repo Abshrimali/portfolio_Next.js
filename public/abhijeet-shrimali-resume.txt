@@ -4,7 +4,7 @@ FULL STACK WEB DEVELOPER
 Phone: +92 311 2964673
 Email: abbi.shrimali@gmail.com
 Location: Karachi, Pakistan
-LinkedIn: https://linkedin.com/in/abhijeet-shrimali
+LinkedIn: https://pk.linkedin.com/in/abhijeet-shrimali-39aa20224
 GitHub: https://github.com/Abshrimali
 
 OBJECTIVE
@@ -25,7 +25,7 @@ Currently Studying
   Aptech Learning Pakistan (in progress)
 
 Completed
-- SBTE - Bridge Course (Equivalence of HDSE to DAS)
+- SBTE - Bridge Course (Equivalence of HDSE to DAE)
   Aptech Learning Pakistan
   Batch: April 2024
 - Matriculation - Science Group

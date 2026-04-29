@@ -2,14 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ArrowDownRight, ArrowUpRight, Globe } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import ProfilePortrait from "@/components/ProfilePortrait";
 import { siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
 const hasLinkedIn = Boolean(siteConfig.linkedin);
-const hasWebsite = Boolean(siteConfig.website);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -111,7 +110,7 @@ export default function Hero() {
                     ? `mailto:${siteConfig.email}`
                     : hasLinkedIn
                       ? siteConfig.linkedin
-                      : siteConfig.website
+                      : siteConfig.github
                 }
                 target={hasRealEmail ? undefined : "_blank"}
                 rel={hasRealEmail ? undefined : "noopener noreferrer"}
@@ -120,7 +119,7 @@ export default function Hero() {
                   ? "Contact me"
                   : hasLinkedIn
                     ? "Connect on LinkedIn"
-                    : "Visit website"}
+                    : "Open GitHub"}
                 <ArrowUpRight size={18} />
               </a>
             </div>
@@ -161,17 +160,6 @@ export default function Hero() {
                   aria-label="LinkedIn profile"
                 >
                   <LinkedinIcon size={18} />
-                </a>
-              ) : null}
-              {hasWebsite ? (
-                <a
-                  href={siteConfig.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-button"
-                  aria-label="Personal website"
-                >
-                  <Globe size={18} />
                 </a>
               ) : null}
             </div>
