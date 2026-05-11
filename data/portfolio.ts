@@ -12,7 +12,7 @@ export const siteConfig = {
   email: "abbi.shrimali@gmail.com",
   phone: "+92 311 2964673",
   github: "https://github.com/Abshrimali",
-  linkedin: "https://pk.linkedin.com/in/abhijeet-shrimali-39aa20224",
+  linkedin: "https://www.linkedin.com/in/abhijeet-shrimali-39aa20224",
   website: "",
   resumeUrl: "/Abhijeet_Shrimali_Resume.docx",
   heroHeadline: {
